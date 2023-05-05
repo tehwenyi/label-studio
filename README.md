@@ -26,7 +26,7 @@ docker run -it -p 8080:8080 -v $(pwd)/mydata:/label-studio/data heartexlabs/labe
 
 
 ## Usage
-1. Open any browser and access Label Studio at `http://localhost:8080`.
+1. Open any browser and access Label Studio at `http://localhost:8080`
 2. Sign up/log in
 3. Create your Project
     * Indicate project name & description
@@ -40,6 +40,8 @@ docker run -it -p 8080:8080 -v $(pwd)/mydata:/label-studio/data heartexlabs/labe
 - If using multiple devices for annotation: 
   * Difficult to import incomplete annotations into another device for annotation. 
   * Recommended to split and allocate images to each device beforehand and combining the dataset again after exporting.
+- If you want to add a pre-trained model:
+  * You can use MMDetection. [Link to instructions](https://labelstud.io/tutorials/object-detector.html)
 
 
 ## Changes (from original repo)
