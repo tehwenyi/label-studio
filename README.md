@@ -22,7 +22,7 @@ docker run -it -p 8080:8080 -v $(pwd)/mydata:/label-studio/data heartexlabs/labe
 ```
 5. You should see the following running:
 
-<img src="images/quickstart/server_running_eg.png" width="60%">
+<img src="images/quickstart/server_running_eg.png">
 
 
 ## Usage
@@ -44,6 +44,7 @@ docker run -it -p 8080:8080 -v $(pwd)/mydata:/label-studio/data heartexlabs/labe
 
 ## Changes (from original repo)
 - Increased maximum dataset size (250MB --> 100GB).The value (in Bytes) can be changed in `Line 80` of [`Dockerfile`](/Dockerfile), under ENV variable `DATA_UPLOAD_MAX_MEMORY_SIZE`
+- Fixed a bug in `label-studio/label_studio/data_import/uploader.py`. [Link to issue](https://github.com/heartexlabs/label-studio/issues/4081)
 
 # Original Repo's README
 <img src="https://user-images.githubusercontent.com/12534576/192582340-4c9e4401-1fe6-4dbb-95bb-fdbba5493f61.png"/>
