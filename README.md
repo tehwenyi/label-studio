@@ -8,16 +8,19 @@
 ```bash
 git clone git@github.com:tehwenyi/label-studio.git
 ```
-2. Build a local image using this repo's Dockerfile:
+2. Change directory
+```bash
+cd label-studio
+```
+3. Build a local image using this repo's Dockerfile:
 ```bash
 docker build -t heartexlabs/label-studio:latest .
 ```
-3. Run the Docker image in debug mode
+4. Run the Docker image in debug mode
 ```bash
 docker run -it -p 8080:8080 -v $(pwd)/mydata:/label-studio/data heartexlabs/label-studio:latest label-studio --log-level DEBUG
 ```
-
-4. You should see the following running:
+5. You should see the following running:
 
 <img src="images/quickstart/server_running_eg.png" width="60%">
 
