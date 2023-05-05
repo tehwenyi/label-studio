@@ -1,3 +1,48 @@
+# Quick Start
+## Requirements
+- Docker Desktop/Docker Engine v23.0 or later (The Dockerfile uses BuildKit)
+
+
+## Set Up (using Docker)
+1. Git clone this repo
+```bash
+git clone git@github.com:tehwenyi/label-studio.git
+```
+2. Build a local image using this repo's Dockerfile:
+```bash
+docker build -t heartexlabs/label-studio:latest .
+```
+3. Run the Docker image in debug mode
+```bash
+docker run -it -p 8080:8080 -v $(pwd)/mydata:/label-studio/data heartexlabs/label-studio:latest label-studio --log-level DEBUG
+```
+
+4. You should see the following running:
+
+<img src="images/quickstart/server_running_eg.png" width="60%">
+
+
+## Usage
+1. Open any browser and access Label Studio at `http://localhost:8080`.
+2. Sign up/log in
+3. Create your Project
+    * Indicate project name & description
+    * Import all your images (Note: The `Data Import` portion may lag. Be patient (:)
+    * Set up your labelling experience
+4. Start Annotating
+5. Export Annotations (COCO format is preferred)
+
+
+## Important Notes
+- If using multiple devices for annotation: 
+  * Difficult to import incomplete annotations into another device for annotation. 
+  * Recommended to split and allocate images to each device beforehand and combining the dataset again after exporting.
+
+
+## Changes (from original repo)
+- Increased maximum dataset size (250MB --> 100GB).The value (in Bytes) can be changed in `Line 80` of [`Dockerfile`](/Dockerfile), under ENV variable `DATA_UPLOAD_MAX_MEMORY_SIZE`
+
+# Original Repo's README
 <img src="https://user-images.githubusercontent.com/12534576/192582340-4c9e4401-1fe6-4dbb-95bb-fdbba5493f61.png"/>
 
 ![GitHub](https://img.shields.io/github/license/heartexlabs/label-studio?logo=heartex) ![label-studio:build](https://github.com/heartexlabs/label-studio/workflows/label-studio:build/badge.svg) ![GitHub release](https://img.shields.io/github/v/release/heartexlabs/label-studio?include_prereleases)
