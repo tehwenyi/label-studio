@@ -20,7 +20,11 @@ docker build -t heartexlabs/label-studio:latest .
 ```bash
 docker run -it -p 8080:8080 -v $(pwd)/mydata:/label-studio/data heartexlabs/label-studio:latest label-studio --log-level DEBUG
 ```
-5. You should see the following running:
+5. If you run into a PermissionError ([Link to issue](https://github.com/heartexlabs/label-studio/issues/3465)), `PermissionError: [Errno 13] Permission denied: '/label-studio/data/media'`, please run the following code in your terminal to make your mount data writable:
+```bash
+sudo chmod -R 777 mydata/
+```
+6. You should see the following running:
 
 <img src="images/quickstart/server_running_eg.png">
 
