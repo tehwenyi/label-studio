@@ -24,7 +24,7 @@ docker run -it -p 8080:8080 -v $(pwd)/mydata:/label-studio/data heartexlabs/labe
 ```bash
 sudo chmod -R 777 mydata/
 ```
-6. You should see the following running:
+6. Upon a successful set up, you should see the following running:
 
 <img src="images/quickstart/server_running_eg.png">
 
