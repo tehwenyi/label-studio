@@ -2,6 +2,19 @@
 ## Requirements
 - Docker Desktop/Docker Engine v23.0 or later (The Dockerfile uses BuildKit)
 
+## Set Up (using Docker Compose)
+1. Git clone this repo
+```bash
+git clone git@github.com:tehwenyi/label-studio.git
+```
+2. Change directory
+```bash
+cd label-studio
+```
+3. Run Docker Compose
+```bash
+docker compose up
+```
 
 ## Set Up (using Docker)
 1. Git clone this repo
