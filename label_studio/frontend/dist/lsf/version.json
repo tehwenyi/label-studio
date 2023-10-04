@@ -1,6 +1,6 @@
 {
-  "message": "feat:  LSDV: 5016 Outliner manual group sort order arrow",
-  "commit": "5b1d692835845c121408e0c580ddd8eb164fe4c6",
+  "message": "fix: OPTIC-133: Blank draft submitted with annotation when using hotkey submit",
+  "commit": "d34cf03f9e80085857f228c6766ec1f76b0e7770",
   "branch": "master",
-  "date": "2023/05/03 11:51:54"
+  "date": "2023/09/28 15:09:56"
 }
