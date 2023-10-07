@@ -33,6 +33,7 @@ docker build -t heartexlabs/label-studio:latest .
 ```bash
 docker run -it -p 8080:8080 -v $(pwd)/mydata:/label-studio/data heartexlabs/label-studio:latest label-studio --log-level DEBUG
 ```
+
 5. If you run into a PermissionError ([Link to issue](https://github.com/heartexlabs/label-studio/issues/3465)), `PermissionError: [Errno 13] Permission denied: '/label-studio/data/media'`, please run the following code in your terminal to make your mount data writable:
 ```bash
 sudo chmod -R 777 mydata/
@@ -54,6 +55,84 @@ Then, run Step 4 again
 4. Start Annotating
 5. Export Annotations (COCO format is preferred)
 
+## Annotate using Pre-annotations via Local Storage
+
+If you have a `predictions.json` COCO annotations file from a model that you'd like to use as pre-annotations, you can do so.
+
+1. Set environment variables so that you can access local storage
+
+   - **Option 1**: If using the `label-studio` package, add these variables to your environment setup:
+
+     ```bash
+     export LABEL_STUDIO_LOCAL_FILES_SERVING_ENABLED=1
+     export LABEL_STUDIO_LOCAL_FILES_DOCUMENT_ROOT=/home/user
+     ```
+     
+     OR for Windows (not tested on Windows):
+     
+     ```bash
+     export LABEL_STUDIO_LOCAL_FILES_SERVING_ENABLED=1
+     export LABEL_STUDIO_LOCAL_FILES_DOCUMENT_ROOT=C:\\data\\media
+     ```
+
+   - **Option 2**: If using Docker, edit the variables and run the bash script:
+   
+     ```bash
+     sh run_docker_preannotations.sh
+     ```
+
+2. Convert your COCO annotation file to the Label Studio Format
+
+   Refer to Quick Start in [Label Studio Converter](https://github.com/tehwenyi/label-studio-converter). 
+   
+   Verify that you have 2 files: `your_output.json` and an `output.label_config.xml`
+
+3. Open Label Studio in your web browser.
+
+4. Add your Configuration.
+
+   - Create your Project. Under Labeling Setup, put your XML into the Code.
+   
+     Example picture:
+     ![Preannotations Labeling](images/screenshots/preannotations_labeling.png)
+
+5. Import your converted `your_output.json` file into your Project.
+
+     ![Preannotations Import](images/screenshots/preannotations_import-button.png)
+
+6. Add Local Storage.
+
+   - For a specific project, open **Settings > Cloud Storage**
+
+   - Click **Add Source Storage**
+
+   - Change Storage Type to **Local Files**
+
+   - If your folder directory is like this:
+
+     ```
+     parent_directory/
+     └── images/
+         ├── image1.jpg
+         ├── image2.png
+         ├── image3.jpeg
+         └── ...
+     ```
+
+     Add `/label-studio/files/images` to absolute local path
+
+     Example image:
+     ![Preannotations Local Storage](images/screenshots/preannotations_local-storage.png)
+
+   - Make sure the checkbox is unchecked. Also do NOT sync storage.
+
+   - Make sure you perform this step AFTER importing the JSON file.
+
+7. Return to your Project. Start annotating.
+
+For general pre-annotations instructions, you can refer to [Label Studio Predictions](https://labelstud.io/guide/predictions).
+
+In case you encounter any issues with Local Storage, you may refer to [Label Studio Storage Guide](https://labelstud.io/guide/storage#Local-storage), [GitHub Issue 1](https://github.com/HumanSignal/label-studio/issues/774), or [GitHub Issue 2](https://github.com/HumanSignal/label-studio/issues/2086).
 
 ## Important Notes
 - If using multiple devices for annotation: 
